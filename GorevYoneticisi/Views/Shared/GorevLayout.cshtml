@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Görevler";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    @Styles.Render("https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css")
+    @Styles.Render("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    @Styles.Render("~/Content/themes/base/jquery-ui.min.css")
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a:focus {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+                .field-validation-error {
+                    color: #e80c4d;
+                    font-weight: bold;
+                }
+
+                input.input-validation-error {
+                    border: 1px solid #e80c4d;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="topnav">
+        <a href="@Url.Action("Index", "KullaniciBilgileri")">Kullanıcı Bilgileri</a>
+        <a href="@Url.Action("Index", "GunlukGorevler")">Gunluk Görevler</a>
+        <a href="@Url.Action("Index", "HaftalikGorevler")">Haftalık Görevler</a>
+        <a href="@Url.Action("Index", "AylikGorevler")">Aylık Görevler</a>
+        <a href="@Url.Action("Index", "GecmisGorevler")">Geçmiş Görevler</a>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Akın SEZER</p>
+        </footer>
+    </div>
+
+</body>
+</html>

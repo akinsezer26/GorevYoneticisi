@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Kullanici Bilgileri";
+    Layout = "~/Views/Shared/GorevLayout.cshtml";
+}
+
+    <h2 style="margin-left:35px">Kullanici Bilgileri</h2>
+    <div style="margin-left:50px">
+        <label style="font-size:18px; font-weight:600">Kullanıcı No:</label><label style="font-size:18px"> @Session["userID"].ToString()</label><br />
+        <label style="font-size:18px; font-weight:600">Kullanıcı Adı:</label><label style="font-size:18px">@Session["UserName"].ToString()</label><br />
+        <label style="font-size:18px; font-weight:600">Kullanıcı Soyadı:</label><label style="font-size:18px">@Session["UserSurName"].ToString()</label><br />
+        <label style="font-size:18px; font-weight:600">Kullanıcı ID: </label><label style="font-size:18px">@Session["UserNickName"].ToString()</label><br />
+        <label style="font-size:18px; font-weight:600">Kullanıcı Şifre: </label><label style="font-size:18px">@Session["UserPassword"].ToString()</label>
+    </div>

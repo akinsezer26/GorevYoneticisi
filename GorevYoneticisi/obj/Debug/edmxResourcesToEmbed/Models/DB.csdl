@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GorevYoneticisiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="GOREV">
+    <Key>
+      <PropertyRef Name="GorevID" />
+    </Key>
+    <Property Name="GorevID" Type="Int32" Nullable="false" />
+    <Property Name="GorevIsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GorevDetay" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BaslangicZamani" Type="DateTime" Precision="0" />
+    <Property Name="BitisZamani" Type="DateTime" Precision="0" />
+    <Property Name="BittiMi" Type="Boolean" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="KULLANICI" Relationship="Self.FK__GOREV__UserID__267ABA7A" FromRole="GOREV" ToRole="KULLANICI" />
+  </EntityType>
+  <EntityType Name="KULLANICI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GOREV" Relationship="Self.FK__GOREV__UserID__267ABA7A" FromRole="KULLANICI" ToRole="GOREV" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__GOREV__UserID__267ABA7A">
+    <End Role="KULLANICI" Type="Self.KULLANICI" Multiplicity="0..1" />
+    <End Role="GOREV" Type="Self.GOREV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KULLANICI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GOREV">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GorevYoneticisiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="GOREV" EntityType="Self.GOREV" />
+    <EntitySet Name="KULLANICI" EntityType="Self.KULLANICI" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__GOREV__UserID__267ABA7A" Association="Self.FK__GOREV__UserID__267ABA7A">
+      <End Role="KULLANICI" EntitySet="KULLANICI" />
+      <End Role="GOREV" EntitySet="GOREV" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

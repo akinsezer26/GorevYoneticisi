@@ -1,0 +1,33 @@
+﻿
+
+
+@model GorevYoneticisi.Models.GOREV
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("addOrEditMonthlyMission", "DB", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.GorevID)
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Gorev_Ismi, "Görev Adı")
+        @Html.EditorFor(model => model.Gorev_Ismi, new { @htmlAttributes = new { placeholder = "Görev Adı", @class = "form-control", autocomplete = "off" } })
+        @Html.ValidationMessageFor(model => model.Gorev_Ismi)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Gorev_Detay, "Görev Detay")<br />
+        @Html.TextAreaFor(model => model.Gorev_Detay, 10, 72, new { @htmlAttributes = new { placeholder = "Görev Detay", @class = "form-control", style = "width: 100%; max-width: 100%; resize: none;" } })
+        @Html.ValidationMessageFor(model => model.Gorev_Detay)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Baslangic_Tarihi, "Başlangıç Tarihi")
+        @Html.EditorFor(model => model.Baslangic_Tarihi, new { @htmlAttributes = new { @type = "Date" } })
+        @Html.ValidationMessageFor(model => model.Baslangic_Tarihi)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Tamamlandi_Mi, "Tamamlandı Mı?")
+        @Html.CheckBox("Tamamlandi_Mi", Model.Tamamlandi_Mi ?? false)
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Ekle" class="btn btn-primary" />
+    </div>
+}
